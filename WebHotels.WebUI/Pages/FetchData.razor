@@ -1,0 +1,48 @@
+﻿@page "/fetchdata"
+@using WebHotels.Domain.Models;
+@using WebHotels.WebUI.Data
+@inject EmployeesController EmployeesService
+
+<PageTitle>Employees</PageTitle>
+
+<h1>Employees List</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+
+@if (employees == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Position</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var emp in employees)
+            {
+                <tr>
+                    <td>@emp.Name</td>
+                    <td>@emp.Surname</td>
+                    <td>@emp.Position</td>
+                    <td>@emp.Age</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private List<Employee>? employees;
+
+    protected override async Task OnInitializedAsync()
+    {
+        employees = await EmployeesService.GetEmployees().ToListAsync();
+    }
+}
