@@ -1,5 +1,6 @@
 ﻿@attribute [Authorize]
 @page "/fetchdata"
+@using System.Timers;
 @using WebHotels.Domain.Models;
 @using WebHotels.WebUI.Data
 @inject EmployeesController EmployeesService
@@ -9,6 +10,7 @@
 <h1>Employees List</h1>
 
 <p>This component demonstrates fetching data from a service.</p>
+<RadzenButton IsBusy=@busy Click="@ButtonClicked" Text="@text" min-width="300px"></RadzenButton>
 
 @if (employees == null)
 {
@@ -41,9 +43,21 @@ else
 
 @code {
     private List<Employee>? employees;
+    private string @text = "Actualizati";
+    private bool @busy = false;
+    private Timer _timer;
 
     protected override async Task OnInitializedAsync()
     {
         employees = await EmployeesService.GetEmployees();
+    }
+
+    private async Task ButtonClicked()
+    {
+        text = "Efectuat!";
+        await Task.Delay(500);
+        busy = false;
+        text = "Actualizati";
+        StateHasChanged();
     }
 }
