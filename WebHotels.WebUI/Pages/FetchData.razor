@@ -1,4 +1,5 @@
-﻿@page "/fetchdata"
+﻿@attribute [Authorize]
+@page "/fetchdata"
 @using WebHotels.Domain.Models;
 @using WebHotels.WebUI.Data
 @inject EmployeesController EmployeesService
@@ -43,6 +44,6 @@ else
 
     protected override async Task OnInitializedAsync()
     {
-        employees = await EmployeesService.GetEmployees().ToListAsync();
+        employees = await EmployeesService.GetEmployees();
     }
 }

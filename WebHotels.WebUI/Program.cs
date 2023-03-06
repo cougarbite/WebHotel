@@ -26,6 +26,7 @@ namespace WebHotels.WebUI
             builder.Services.AddServerSideBlazor();
             builder.Services.AddScoped<AuthenticationStateProvider, RevalidatingIdentityAuthenticationStateProvider<IdentityUser>>();
             builder.Services.AddSingleton<WeatherForecastService>();
+            builder.Services.AddTransient<EmployeesController>();
 
             var app = builder.Build();
 

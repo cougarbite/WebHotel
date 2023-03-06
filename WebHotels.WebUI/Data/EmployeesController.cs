@@ -22,13 +22,25 @@ namespace WebHotels.WebUI.Data
 
         // GET: api/Employees
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        public async Task<List<Employee>> GetEmployees()
         {
-          if (_context.Employees == null)
+
+            //var project = await _context.Projects
+            //.Include(p => p.Users)
+            //.Include(p => p.Owner)
+            //.Include(p => p.Activities)
+            //.ToListAsync();
+            //return project;
+
+
+
+            if (_context.Employees == null)
           {
-              return NotFound();
+              return new List<Employee>();
           }
-            return Task.FromResult(await _context.Employees.GetAll());
+
+            var result = await _context.Employees.ToListAsync();
+            return result;
         }
 
         // GET: api/Employees/5
