@@ -19,18 +19,28 @@
                 <span class="oi oi-plus" aria-hidden="true"></span> Counter
             </NavLink>
         </div>
-        <AuthorizeView Roles="Admin, Emp">
+        <AuthorizeView Roles="Admin">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="employees">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Employees
             </NavLink>
         </div>
+        </AuthorizeView>
+        <AuthorizeView Roles="Admin, Emp">
         <div class="nav-item px-3">
             <NavLink class="nav-link" href="clients">
                 <span class="oi oi-list-rich" aria-hidden="true"></span> Clients
             </NavLink>
         </div>
         </AuthorizeView>
+        <AuthorizeView Roles="Cli">
+            <div class="nav-item px-3">
+                <NavLink class="nav-link" href="reservations">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span> My Reservations
+                </NavLink>
+            </div>
+        </AuthorizeView>
+
     </nav>
 </div>
 
