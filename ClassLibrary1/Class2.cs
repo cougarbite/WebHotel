@@ -1,13 +1,12 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace WebHotels.Domain.Models
+namespace ClassLibrary1
 {
-    public class BaseEntity
+    internal class Class2
     {
-        public int Id { get; set; }
     }
 }
